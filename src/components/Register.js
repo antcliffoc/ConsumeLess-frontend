@@ -73,19 +73,19 @@ export default function Register() {
     let history = useHistory();
     let classes = useStyles();
     let authService = new AuthService()
-  
+
     const [username, setUsername] = useState('');
     const [postcode, setPostCode] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [confirmpassword, setPasswordConfirmation] = useState('');
-  
+
     const [open, setOpen] = React.useState(false);
-  
+
     const handleClickOpen = () => {
       setOpen(true);
     };
-  
+
     const handleClose = () => {
       setOpen(false);
     }
@@ -96,7 +96,7 @@ export default function Register() {
     const handleUserNameInput = event => {
       setUsername(event.target.value);
     };
-  
+
     const handlePasswordInput = event => {
       setPassword(event.target.value);
     };
@@ -104,7 +104,7 @@ export default function Register() {
     const handleEmailInput = event => {
       setEmail(event.target.value);
     };
-  
+
     const handlePasswordConfirm = event => {
       setPasswordConfirmation(event.target.value);
     };
@@ -119,12 +119,12 @@ export default function Register() {
         }
       })
     });
-  
+
     const handleSubmit = (event) => {
       event.preventDefault();
-  
+
       let payload = new FormData(event.target)
-  
+
       authService.register(payload)
         .then(res => history.replace('/categories'))
         .catch(error => handleClickOpen())

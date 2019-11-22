@@ -13,17 +13,20 @@ class BrowseByCategory extends Component {
     this.updateItems = (category) => {
       getData(URLs.category + `${category}`, {
           method: 'GET',
-      })
-          .then(items => {
+      }).then(items => {
+          console.log(items)
           this.setState({items: items})
           return Promise.resolve(items);
-          })
+      }).catch(res => {
+        this.setState({items: []});
+        return Promise.reject(res);
+      })
     }
     this.state = { items: [],
                    category: null,
                    map_long: null,
                    map_lat: null,
-                   categories: ['books', 'clothes', 'games', 'music', 'garden', 'toys']
+                   categories: ['books', 'clothes', 'games', 'music', 'equipment', 'toys']
                   };
     this.Auth = new AuthService();
     }
@@ -39,7 +42,7 @@ class BrowseByCategory extends Component {
   }
   changeCategory = (category) => {
     console.log(`you clicked ${category}`)
-    this.setState({ category})
+    this.setState({ category })
     this.updateItems(category)
   }
 

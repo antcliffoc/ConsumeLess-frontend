@@ -26,9 +26,7 @@ export default class AuthService {
         return this.fetch(URLs.register, {
             method: 'POST',
             body: payload,
-        })
-            .then(res => {
-            console.log(res.token)
+        }).then(res => {
             this.setToken(res.token) // Setting the token in localStorage
             return Promise.resolve(res);
             })

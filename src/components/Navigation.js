@@ -7,7 +7,7 @@ import { useHistory, withRouter } from 'react-router-dom';
 import AuthService from './AuthService';
 import getData from "../actions/getData";
 import { URLs } from '../constants/URLs';
-const Auth = new AuthService(); 
+const Auth = new AuthService();
 
 export default class Navigation extends Component {
   state = {
@@ -18,7 +18,7 @@ export default class Navigation extends Component {
   }
 
   async componentDidMount() {
-    const userId = Auth.getProfile().user_id;
+    const userId = await Auth.getProfile().user_id;
     const user = await getData(URLs.user + `${userId}`);
     this.setState({ user });
   }
@@ -29,13 +29,13 @@ export default class Navigation extends Component {
       localStorage.removeItem('id_token');
       return <Redirect to="/" push={true} />
     }
-    
+
     const { username } = this.state.user;
 
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" variant="light" className="Navigation">
-        <div className="navbar-collapse collapse w-100 order-3 order-md-0 dual-collapse2">          
+        <div className="navbar-collapse collapse w-100 order-3 order-md-0 dual-collapse2">
           <Navbar.Brand href="/"><img src={require('../logo-with-name-small.svg')} /></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
