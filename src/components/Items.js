@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Itemcard from "./Itemcard"
 import { URLs } from '../constants/URLs'
 import Navigation from "./Navigation";
-import Cards from "./Cards";
+// import Cards from "./Cards";
 import getData from "../actions/getData";
 
 // import InfiniteCarousel from 'react-leaf-carousel';
@@ -23,8 +23,8 @@ class Items extends Component {
   }
 
   render(){
-    
-  
+
+
     return (
       <div><Navigation />
       <div className="col-md-6 col-lg-4">

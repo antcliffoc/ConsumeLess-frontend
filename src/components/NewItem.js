@@ -95,7 +95,7 @@ export default function Register() {
 
   let history = useHistory();
   let classes = useStyles();
-  let authService = new AuthService() 
+  let authService = new AuthService()
 
   const [name, setItemname] = useState('');
   const [description, setDescription] = useState('');
@@ -105,8 +105,8 @@ export default function Register() {
   const [open, setOpen] = React.useState(false);
   const inputLabel = React.useRef(category);
   const [labelWidth, setLabelWidth] = useState(0);
-  
- 
+
+
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
@@ -127,7 +127,7 @@ export default function Register() {
 
   const filterNonNumber = (event) => {
     const {value} = event.target;
-    
+
     if(value=="") {
       handleOverdueCharge(null);
     }
@@ -136,10 +136,10 @@ export default function Register() {
     if (floatValue) {
       handleOverdueCharge(floatValue);
     }
-  
+
     return null;
   }
-  
+
 
   const handleItemName = event => {
     setItemname(event.target.value);
@@ -200,9 +200,9 @@ export default function Register() {
                 onChange={handleCategory}
                 labelWidth={labelWidth}
               >
-              <MenuItem value='book'>Book</MenuItem>
+              <MenuItem value='books'>Book</MenuItem>
               <MenuItem value='clothes'>Clothes</MenuItem>
-              <MenuItem value='toy'>Toy</MenuItem>
+              <MenuItem value='toys'>Toy</MenuItem>
               <MenuItem value='games'>Games</MenuItem>
               <MenuItem value='music'>Music</MenuItem>
               <MenuItem value='equipment'>Garden/Building equipment</MenuItem>
@@ -260,7 +260,7 @@ export default function Register() {
                 color="primary"
                 className={classes.submit}
               >Submit
-                
+
             </Button>
             </ValidatorForm>
           </div>

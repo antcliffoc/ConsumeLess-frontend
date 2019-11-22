@@ -38,7 +38,7 @@ export default class Profile extends Component {
   }
 
   async componentDidMount() {
-    const userId = this.Auth.getProfile().user_id;
+    const userId = await this.Auth.getProfile().user_id;
     const user = await getData(URLs.user + `${userId}`);
     this.setState({ user });
 
@@ -79,6 +79,7 @@ export default class Profile extends Component {
 
   render() {
     const { user, itemsOwn } = this.state;
+    console.log(user)
     return (
       <div><Navigation />
         <Jumbotron variant="primary">

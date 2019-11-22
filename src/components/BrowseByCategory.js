@@ -35,6 +35,7 @@ class BrowseByCategory extends Component {
   }
 
   render(){
+    console.log(this.state.items)
     const { items, category, categories } = this.state;
     return (
       <div>

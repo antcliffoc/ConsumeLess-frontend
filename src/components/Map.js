@@ -3,6 +3,7 @@ import { InfoWindow, Marker, Map, GoogleApiWrapper } from 'google-maps-react';
 import { URLs } from '../constants/URLs';
 import getData from "../actions/getData";
 import Button from 'react-bootstrap/Button';
+import { APIs } from '../constants/APIs';
 
 const mapStyles = {
   width: 'auto',
@@ -46,7 +47,7 @@ export class MapContainer extends Component {
     const { items } = this.props;
     const { activeMarker, selectedItem, showingInfoWindow } = this.state;
     this.state.items.map((item)=>{ console.log(item.longitude) })
-    console.log(selectedItem.identifier)
+    // console.log(selectedItem.identifier)
     let icon = {
       url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
     }
@@ -83,5 +84,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDfkHZsny6TVUsJjoS-Jo3okXAhEKYMtCM'
+  apiKey: APIs.maps
 })(MapContainer);
