@@ -9,8 +9,7 @@ class BrowseByCategory extends Component {
   constructor(props) {
     super(props);
     this.updateItems = (category) => {
-      let items
-      return items = getData(URLs.category + `${category}`, {
+      getData(URLs.category + `${category}`, {
           method: 'GET',
       })
           .then(items => {
@@ -22,7 +21,7 @@ class BrowseByCategory extends Component {
                    category: null,
                    categories: ['books', 'clothes', 'games', 'music', 'garden', 'toys']
                   };
-  }
+    }
 
   async componentDidMount() {
     const items = await getData(URLs.category + `${this.state.category}`);
