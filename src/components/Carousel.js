@@ -43,9 +43,9 @@ export default class Carousel extends Component {
           dots={false}
           showSides={true}
           sidesOpacity={.5}
-          sideSize={.5}
-          slidesToScroll={5}
-          slidesToShow={5}
+          sideSize={.3}
+          slidesToScroll={4}
+          slidesToShow={4}
           scrollOnDevice={true}
           >
 

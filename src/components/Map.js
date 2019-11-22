@@ -68,7 +68,7 @@ export class MapContainer extends Component {
       >
       {items.map((item) => {
         return (
-          <Marker onClick={this.onMarkerClick} icon={{url: "/consumeless.png"}} name={ `${item.name}` } category={item.category} position={{lat: item.latitude, lng: item.longitude}} identifier={`${item.id}`} key={`${item.id}`}/>
+          <Marker onClick={this.onMarkerClick} icon={{url: "/mapIcon.png", scaledSize: new window.google.maps.Size(30, 30) }} name={ `${item.name}` } category={item.category} position={{lat: item.latitude, lng: item.longitude}} identifier={`${item.id}`} key={`${item.id}`}/>
         )
       })}
       {selectedItem && (<InfoWindow
