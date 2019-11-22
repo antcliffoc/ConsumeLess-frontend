@@ -4,6 +4,7 @@ import { URLs } from '../constants/URLs';
 import getData from "../actions/getData";
 import Button from 'react-bootstrap/Button';
 import { APIs } from '../constants/APIs';
+import { CategoryPics } from '../constants/CategoryPics';
 
 const mapStyles = {
   width: 'auto',
@@ -67,7 +68,7 @@ export class MapContainer extends Component {
       >
       {items.map((item) => {
         return (
-          <Marker onClick={this.onMarkerClick} name={ `${item.name}` } position={{lat: item.latitude, lng: item.longitude}} identifier={`${item.id}`} key={`${item.id}`}/>
+          <Marker onClick={this.onMarkerClick} name={ `${item.name}` } category={item.category} position={{lat: item.latitude, lng: item.longitude}} identifier={`${item.id}`} key={`${item.id}`}/>
         )
       })}
       {selectedItem && (<InfoWindow
@@ -77,6 +78,8 @@ export class MapContainer extends Component {
       >
         <div>
           <h4>{selectedItem.name}</h4>
+          <img style={{height: 70}} src={CategoryPics[selectedItem.category]}/>
+          <br/>
           <Button href={`/item/${selectedItem.identifier}`}> View Item </Button>
         </div>
       </InfoWindow>)}
