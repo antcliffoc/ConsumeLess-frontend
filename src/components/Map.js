@@ -5,11 +5,12 @@ import getData from "../actions/getData";
 import Button from 'react-bootstrap/Button';
 import { APIs } from '../constants/APIs';
 import { CategoryPics } from '../constants/CategoryPics';
+import mapStyle from './mapStyle';
 
-const mapStyles = {
+const mapSize = {
   width: 'auto',
   maxWidth:'100%',
-  height:'80vh'
+  height:'50vh'
 };
 
 export class MapContainer extends Component {
@@ -60,7 +61,8 @@ export class MapContainer extends Component {
       <Map
         google={this.props.google}
         zoom={12}
-        style={mapStyles}
+        style={mapSize}
+        styles={mapStyle}
         initialCenter={{
          lat: map_lat,
          lng: map_long
@@ -68,7 +70,7 @@ export class MapContainer extends Component {
       >
       {items.map((item) => {
         return (
-          <Marker onClick={this.onMarkerClick} icon={{url: "/mapIcon.png", scaledSize: new window.google.maps.Size(30, 30) }} name={ `${item.name}` } category={item.category} position={{lat: item.latitude, lng: item.longitude}} identifier={`${item.id}`} key={`${item.id}`}/>
+          <Marker onClick={this.onMarkerClick} icon={{url: "/mapIcon.png", scaledSize: new window.google.maps.Size(38, 38) }} name={ `${item.name}` } category={item.category} position={{lat: item.latitude, lng: item.longitude}} identifier={`${item.id}`} key={`${item.id}`}/>
         )
       })}
       {selectedItem && (<InfoWindow
