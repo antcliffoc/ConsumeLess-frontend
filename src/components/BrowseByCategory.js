@@ -5,6 +5,7 @@ import Carousel from './Carousel';
 import MapContainer from "./Map";
 import Navigation from './Navigation';
 
+
 class BrowseByCategory extends Component {
   constructor(props) {
     super(props);
@@ -38,13 +39,13 @@ class BrowseByCategory extends Component {
     const { items, category, categories } = this.state;
     return (
       <div>
-      <Navigation/>
-      <div  style={{padding:30}}>
-      <Carousel categories={categories} category={category} changeCategory={this.changeCategory}/>
-      </div>
-      <div>
+        <Navigation/>
+        <div  style={{padding:10}}>
+          <Carousel categories={categories} category={category} changeCategory={this.changeCategory}/>
+        </div>
+        <div>
           <MapContainer items={items}/>
-      </div>
+        </div>
       </div>
     )}
 }
