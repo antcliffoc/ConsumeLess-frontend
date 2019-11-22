@@ -68,7 +68,7 @@ export class MapContainer extends Component {
       >
       {items.map((item) => {
         return (
-          <Marker onClick={this.onMarkerClick} name={ `${item.name}` } category={item.category} position={{lat: item.latitude, lng: item.longitude}} identifier={`${item.id}`} key={`${item.id}`}/>
+          <Marker onClick={this.onMarkerClick} icon={{url: "/consumeless.png"}} name={ `${item.name}` } category={item.category} position={{lat: item.latitude, lng: item.longitude}} identifier={`${item.id}`} key={`${item.id}`}/>
         )
       })}
       {selectedItem && (<InfoWindow
