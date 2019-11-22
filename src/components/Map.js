@@ -19,7 +19,9 @@ export class MapContainer extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedItem: {},
-      items: this.props.items
+      items: this.props.items,
+      map_long: this.props.map_long,
+      map_lat: this.props.map_lat
     };
     // this.catItems = this.catItems.bind(this);
   }
@@ -44,22 +46,23 @@ export class MapContainer extends Component {
 
 
   render() {
-    const { items } = this.props;
+    const { map_long, map_lat, items } = this.props;
     const { activeMarker, selectedItem, showingInfoWindow } = this.state;
     this.state.items.map((item)=>{ console.log(item.longitude) })
     // console.log(selectedItem.identifier)
     let icon = {
       url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
     }
-    return (
+
+      return (
       <div className="map">
       <Map
         google={this.props.google}
         zoom={12}
         style={mapStyles}
         initialCenter={{
-         lat: 51.51746,
-         lng: -0.07329
+         lat: map_lat,
+         lng: map_long
         }}
       >
       {items.map((item) => {

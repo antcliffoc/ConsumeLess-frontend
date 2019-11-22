@@ -4,6 +4,7 @@ import { URLs } from '../constants/URLs';
 import Carousel from './Carousel';
 import MapContainer from "./Map";
 import Navigation from './Navigation';
+import AuthService from './AuthService';
 
 
 class BrowseByCategory extends Component {
@@ -20,11 +21,19 @@ class BrowseByCategory extends Component {
     }
     this.state = { items: [],
                    category: null,
+                   map_long: null,
+                   map_lat: null,
                    categories: ['books', 'clothes', 'games', 'music', 'garden', 'toys']
                   };
+    this.Auth = new AuthService();
     }
 
   async componentDidMount() {
+    const map_long = await this.Auth.getProfile().user_long;
+    this.setState({ map_long });
+    const map_lat = await this.Auth.getProfile().user_lat;
+    this.setState({ map_lat });
+
     const items = await getData(URLs.category + `${this.state.category}`);
     this.setState({ items })
   }
@@ -35,19 +44,30 @@ class BrowseByCategory extends Component {
   }
 
   render(){
-    console.log(this.state.items)
-    const { items, category, categories } = this.state;
-    return (
-      <div>
-        <Navigation/>
-        <div  style={{padding:10}}>
-          <Carousel categories={categories} category={category} changeCategory={this.changeCategory}/>
-        </div>
+    const { map_long, map_lat, items, category, categories } = this.state;
+    if (map_long && map_lat) {
+      return (
         <div>
-          <MapContainer items={items}/>
+          <Navigation/>
+          <div  style={{padding:10}}>
+            <Carousel categories={categories} category={category} changeCategory={this.changeCategory}/>
+          </div>
+          <div>
+            <MapContainer items={items} map_long={map_long} map_lat={map_lat}/>
+          </div>
         </div>
-      </div>
-    )}
+      )
+    } else {
+      return (
+        <div>
+          <Navigation/>
+          <div  style={{padding:10}}>
+            <Carousel categories={categories} category={category} changeCategory={this.changeCategory}/>
+          </div>
+        </div>
+      )
+    }
+    }
 }
 
 export default BrowseByCategory;

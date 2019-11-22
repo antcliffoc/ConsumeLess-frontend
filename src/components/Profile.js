@@ -45,11 +45,9 @@ export default class Profile extends Component {
     const token = this.Auth.getToken();
     const itemsOwn = await getData(URLs.itemsOwn + `?token=${token}`);
     this.setState({ itemsOwn });
-    console.log(itemsOwn)
 
     const itemsBorrowed = await getData(URLs.itemsBorrowed + `?token=${token}`);
     this.setState({ itemsBorrowed });
-    console.log(itemsBorrowed)
 
     const itemsLent = await getData(URLs.itemsLent + `?token=${token}`);
     this.setState({ itemsLent });
@@ -79,7 +77,6 @@ export default class Profile extends Component {
 
   render() {
     const { user, itemsOwn } = this.state;
-    console.log(user)
     return (
       <div><Navigation />
         <Jumbotron variant="primary">
