@@ -79,10 +79,11 @@ export class MapContainer extends Component {
         onClose={this.onClose}
       >
         <div>
-          <h4>{selectedItem.name}</h4>
+          <h4 style={{color: '#303030'}}>{selectedItem.name}</h4>
           <img style={{height: 70}} src={CategoryPics[selectedItem.category]}/>
           <br/>
-          <Button href={`/item/${selectedItem.identifier}`}> View Item </Button>
+          <br/>
+          <Button style={{backgroundColor: '#303030'}} href={`/item/${selectedItem.identifier}`}> View Item </Button>
         </div>
       </InfoWindow>)}
       </Map>
